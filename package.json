@@ -1,0 +1,23 @@
+{
+  "name": "rxjs-starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "parcel-bundler": "^1.12.3",
+    "rxjs": "^6.5.3"
+  },
+  "browserslist": [
+  "last 3 and_chr versions",
+  "last 3 chrome versions",
+  "last 3 opera versions",
+  "last 3 ios_saf versions",
+  "last 3 safari versions"
+],
+  "devDependencies": {},
+  "scripts": {
+    "start": "parcel index.html -p 3000"
+  },
+  "author": "Brian Troncone, Ultimate Courses",
+  "license": "MIT"
+}
