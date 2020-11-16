@@ -1,5 +1,5 @@
-import { fromEvent } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { fromEvent, interval } from 'rxjs';
+import { map, reduce, take } from 'rxjs/operators';
 
 function calculateScrollPercent(element) {
 	const { scrollTop, scrollHeight, clientHeight } = element;
@@ -15,3 +15,13 @@ const scroll$ = fromEvent(document, 'scroll').pipe(
 scroll$.subscribe((val) => {
 	progressBar.style.width = `${val}%`;
 });
+
+interval(200)
+	.pipe(
+		take(10),
+		reduce((total, current) => total + current, 0)
+	)
+	.subscribe({
+		next: (val) => console.info('next', val),
+		complete: () => console.info('Complete!'),
+	});
