@@ -1,21 +1,6 @@
 import { fromEvent } from 'rxjs';
 import { map, takeWhile } from 'rxjs/operators';
 
-function calculateScrollPercent(element) {
-	const { scrollTop, scrollHeight, clientHeight } = element;
-	return (scrollTop / (scrollHeight - clientHeight)) * 100;
-}
-
-const progressBar = document.querySelector('.progress-bar');
-
-const scroll$ = fromEvent(document, 'scroll').pipe(
-	map((event) => calculateScrollPercent(event.target.scrollingElement))
-);
-
-scroll$.subscribe((val) => {
-	progressBar.style.width = `${val}%`;
-});
-
 const observer = {
 	next: (val) => console.info('next', val),
 	error: (error) => console.info('error', error),
@@ -24,6 +9,7 @@ const observer = {
 
 const click$ = fromEvent(document, 'click');
 
+// emit values till y > 600
 click$
 	.pipe(
 		map((event) => ({
